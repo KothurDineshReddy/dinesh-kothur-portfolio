@@ -576,6 +576,155 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
   </div>
 </section>
 
+<!-- CHAT WITH ME -->
+<section id="chat">
+  <div style="max-width:760px; margin:0 auto;">
+    <p class="section-eyebrow reveal">AI-Powered</p>
+    <h2 class="section-headline reveal">Chat with <em style="font-style:italic; color:rgba(255,255,255,0.4);">Dinesh</em></h2>
+    <p class="section-sub reveal">Ask me anything — my experience, skills, projects, or whether I'd be a fit for your team. Powered by Claude AI with my full background as context.</p>
+
+    <div id="chat-suggestions" class="reveal" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
+      <button class="sugg-btn" onclick="askSuggestion(this)">What makes Dinesh stand out?</button>
+      <button class="sugg-btn" onclick="askSuggestion(this)">Tell me about his RAG & LLM experience</button>
+      <button class="sugg-btn" onclick="askSuggestion(this)">What MLOps work has he done?</button>
+      <button class="sugg-btn" onclick="askSuggestion(this)">Is he a fit for a senior AI role?</button>
+      <button class="sugg-btn" onclick="askSuggestion(this)">What's his biggest production impact?</button>
+      <button class="sugg-btn" onclick="askSuggestion(this)">What certifications does he hold?</button>
+    </div>
+
+    <div id="chat-window">
+      <div id="chat-messages">
+        <div class="chat-msg ai-msg">
+          <div class="msg-avatar">DK</div>
+          <div class="msg-bubble">Hi! I'm Dinesh's AI assistant. I have his full background, work history, projects, and skills loaded. Ask me anything — whether you're a recruiter, hiring manager, or just curious. 👋</div>
+        </div>
+      </div>
+      <div id="chat-input-row">
+        <input id="chat-input" type="text" placeholder="Ask about Dinesh's experience, skills, availability…" onkeydown="if(event.key==='Enter') sendChat()" />
+        <button id="send-btn" onclick="sendChat()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+      <p id="chat-footer-note">Powered by Claude · Responses are AI-generated based on Dinesh's actual background</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-eyebrow reveal" style="color:var(--blue-light); display:flex; justify-content:center;">Let's Connect</p>
+  <h2 class="contact-headline reveal">Ready to build<br>something great?</h2>
+  <p class="contact-sub reveal">Open to AI/ML engineering roles, GenAI consulting, and research collaborations. Based in Dallas, TX — open to remote and hybrid.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:dineshreddy9020@gmail.com" class="contact-link">✉ dineshreddy9020@gmail.com</a>
+    <a href="tel:+16699778768" class="contact-link">📞 +1 (669) 977-8768</a>
+    <a href="https://linkedin.com/in/dinesh-kothur" target="_blank" class="contact-link">in LinkedIn</a>
+  </div>
+  <a href="mailto:dineshreddy9020@gmail.com" class="contact-main-btn reveal">Say hello →</a>
+</section>
+
+<footer>© 2026 Dinesh Kothur · AI Engineer · ML Engineer · MLOps · Dallas, TX</footer>
+
+<script>
+// ── Scroll reveal ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── Chat ──
+const SYSTEM_PROMPT = `You are an AI assistant representing Dinesh Kothur, an AI/ML Engineer in Dallas, TX. Answer questions from recruiters, hiring managers, and visitors about his background, skills, experience, and fit for roles. Be warm, confident, and concise. Speak in third person ("Dinesh has...", "He built..."). Never invent information — only use what is provided below.
+
+ABOUT: Name: Dinesh Kothur | Dallas, TX | dineshreddy9020@gmail.com | +1 (669) 977-8768 | linkedin.com/in/dinesh-kothur | Roles: AI Engineer, ML Engineer, MLOps Engineer | 3+ years experience | MS Data Science, San Jose State University (2023–2025) | Open to senior AI/ML roles, MLOps, GenAI consulting, remote & hybrid.
+
+CURRENT — ML Engineer, Southern Glazer's Wine & Spirits (Sep 2025–Present, Dallas TX):
+- AI classification pipeline (Azure OpenAI + LangChain) for SAP S/4HANA migration: 87% first-pass accuracy on 100K+ customers, 70% manual effort reduction
+- Agentic Databricks framework for SQL parsing & code lineage: precision 58%→91%, analyst time 2-3 days → under 3 hours
+- Internal MCP server on Databricks wrapping 5+ ML tools for LLM agent orchestration
+- Hybrid IDP pipeline (Azure Document Intelligence + Claude 3.7 Sonnet): 99% field extraction on 150+ retailer docs
+- Vector embedding product enrichment: 95% match accuracy on 150K-300K records vs million-SKU catalog
+- RAG/LLM eval (LLM-as-a-Judge, RAGAS, ROUGE): 28% hallucination reduction, 90% task success rate
+- PSI drift monitoring + automated retraining: 30% degradation reduction, +12pp held-out accuracy
+- AWS pipeline migrations: CodeCommit, CodePipeline, CodeBuild, MWAA, SageMaker | CI/CD: Pytest, Ruff, Harness
+
+PREV — Data Scientist, KATS Tax & Accounting (Jan–May 2025, San Jose CA):
+- Multimodal agentic RAG chatbot (LangGraph + FastAPI + Pinecone): 60% fewer specialist escalations
+- Fine-tuned Mistral-7B with QLoRA on A100 GPUs: RAGAS factuality 0.61→0.69 (+23% relative)
+- 2000+ IRS docs via LlamaParse + CLIP, ~250ms retrieval, Arize AI monitoring | MLflow + Arize AI for audit-ready logging
+
+PREV — SWE ML, Auraworx India (Oct 2022–Aug 2023):
+- AWS Textract Document AI; BERT fine-tuned to 91% accuracy across 8 doc categories
+- Python validation engine: 35% fewer compliance errors | ETL (S3 + Lambda + PostgreSQL): 45% faster intake
+
+PREV — SWE Data Science, TCS India (Aug 2021–Oct 2022):
+- SARIMAX/XGBoost/Random Forest demand forecasting for 180+ dealerships: 9% sales uplift
+- A/B + causal inference: 22% digital conversion lift, $2M untracked revenue surfaced | Azure Data Factory pipelines
+
+PROJECTS: (1) GenAI Multi-Agent Vehicle Damage Analyst: GPT-4o + Claude 3.5 + PyAutoGen — 90% less manual inspection. (2) Multi-Agent ML Automation: CrewAI + A2A protocols — <500ms latency, FastAPI + Docker. (3) PersonaLLM: QLoRA + RAG + vLLM — 200 QPS, 92% relevance, 60% latency reduction.
+
+SKILLS: Python, SQL, R | PyTorch, TF, HuggingFace, XGBoost, vLLM | LangChain, LangGraph, CrewAI, RAG, QLoRA, MCP, A2A, Pinecone, LlamaIndex | Azure OpenAI, GPT-4o, Claude 3.5, CLIP, OCR | RAGAS, LLM-as-a-Judge, Arize AI, MLflow, PSI Drift | AWS SageMaker, Databricks, Docker, Kubernetes, Airflow, Harness | PostgreSQL, Snowflake, PySpark, MongoDB | FastAPI, Flask, Microservices
+
+CERTIFICATIONS: AWS Certified ML Engineer – Associate (verified: credly.com/badges/cdeca2b2) | Databricks Certified GenAI Fundamentals (verified) | Cisco Data Analytics Essentials (verified)
+
+Keep answers to 2–4 short paragraphs. If asked something not covered, suggest they email dineshreddy9020@gmail.com.`;
+
+const chatMessages = document.getElementById('chat-messages');
+const chatInput = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
+let history = [];
+
+function scrollBottom() { chatMessages.scrollTop = chatMessages.scrollHeight; }
+
+function addMsg(role, text) {
+  const isUser = role === 'user';
+  const d = document.createElement('div');
+  d.className = 'chat-msg ' + (isUser ? 'user-msg' : 'ai-msg');
+  d.innerHTML = `<div class="msg-avatar">${isUser ? '👤' : 'DK'}</div><div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div>`;
+  chatMessages.appendChild(d);
+  scrollBottom();
+}
+
+function showTyping() {
+  const d = document.createElement('div');
+  d.className = 'chat-msg ai-msg'; d.id = 'typing';
+  d.innerHTML = `<div class="msg-avatar">DK</div><div class="msg-bubble"><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>`;
+  chatMessages.appendChild(d); scrollBottom();
+}
+function hideTyping() { const el = document.getElementById('typing'); if (el) el.remove(); }
+
+async function askSuggestion(btn) {
+  chatInput.value = btn.textContent;
+  document.getElementById('chat-suggestions').style.display = 'none';
+  await sendChat();
+}
+
+async function sendChat() {
+  const text = chatInput.value.trim();
+  if (!text || sendBtn.disabled) return;
+  chatInput.value = ''; sendBtn.disabled = true;
+  document.getElementById('chat-suggestions').style.display = 'none';
+  addMsg('user', text);
+  history.push({ role: 'user', content: text });
+  showTyping();
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: SYSTEM_PROMPT, messages: history })
+    });
+    const data = await res.json();
+    hideTyping();
+    const reply = data?.content?.[0]?.text || "Sorry, I had a connection issue. Please reach out to Dinesh directly at dineshreddy9020@gmail.com.";
+    addMsg('assistant', reply);
+    history.push({ role: 'assistant', content: reply });
+  } catch {
+    hideTyping();
+    addMsg('assistant', "Connection issue. Please reach out to Dinesh at dineshreddy9020@gmail.com.");
+  }
+  sendBtn.disabled = false;
+  chatInput.focus();
+}
 </script>
 </body>
 </html>
