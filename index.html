@@ -20,7 +20,6 @@ html { scroll-behavior: smooth; font-size: 16px; }
   --blue: #0066cc;
   --blue-light: #2997ff;
   --green: #1a7f37;
-  --green-bg: #e6f4ea;
   --aws-orange: #ff9900;
   --radius: 18px;
 }
@@ -35,164 +34,67 @@ body {
 
 /* ─── NAV ─── */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 200;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 52px; display: flex; align-items: center; justify-content: space-between;
   padding: 0 24px;
   background: rgba(255,255,255,0.72);
   backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 .nav-logo { font-size: 17px; font-weight: 600; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
-.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
 .nav-links a { font-size: 13px; color: var(--mid-gray); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--dark); }
+.nav-links a.highlight { color: var(--blue-light); font-weight: 500; }
 .nav-cta { font-size: 13px; font-weight: 500; background: var(--dark); color: white; padding: 7px 16px; border-radius: 980px; text-decoration: none; transition: background 0.2s; }
 .nav-cta:hover { background: #333; }
 
 /* ─── HERO ─── */
 #hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 120px 24px 80px;
-  background: var(--black);
-  position: relative;
-  overflow: hidden;
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 120px 24px 80px; background: var(--black);
+  position: relative; overflow: hidden;
 }
 .hero-gradient {
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; pointer-events: none;
   background:
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(41,151,255,0.15) 0%, transparent 60%),
     radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,102,204,0.1) 0%, transparent 60%);
-  pointer-events: none;
 }
-
-/* ── TRIPLE TITLE PILLS ── */
-.title-pills {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 28px;
-  animation: fadeUp 0.7s ease both;
-}
-.title-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 980px;
-  padding: 7px 18px;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.85);
-  letter-spacing: 0.2px;
-  background: rgba(255,255,255,0.06);
-}
-.title-pill .dot { width: 6px; height: 6px; border-radius: 50%; }
+.title-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; animation: fadeUp 0.7s ease both; }
+.title-pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.18); border-radius: 980px; padding: 7px 18px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.06); }
+.title-pill .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 .pill-ai .dot { background: #2997ff; }
 .pill-ml .dot { background: #30d158; }
 .pill-mlops .dot { background: #ff9f0a; }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 980px;
-  padding: 6px 14px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 20px;
-  animation: fadeUp 0.7s 0.04s ease both;
-}
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 980px; padding: 6px 14px; font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 20px; animation: fadeUp 0.7s 0.04s ease both; }
 .hero-dot { width: 7px; height: 7px; background: #30d158; border-radius: 50%; animation: blink 2s infinite; }
-@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-.hero-title {
-  font-family: 'DM Serif Display', Georgia, serif;
-  font-size: clamp(48px, 8.5vw, 92px);
-  font-weight: 400;
-  color: var(--white);
-  line-height: 1.0;
-  letter-spacing: -2px;
-  margin-bottom: 24px;
-  animation: fadeUp 0.8s 0.08s ease both;
-}
+.hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(48px,8.5vw,92px); font-weight: 400; color: var(--white); line-height: 1.0; letter-spacing: -2px; margin-bottom: 24px; animation: fadeUp 0.8s 0.08s ease both; }
 .hero-title em { font-style: italic; color: rgba(255,255,255,0.45); }
+.hero-sub { max-width: 540px; font-size: 19px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 36px; animation: fadeUp 0.8s 0.12s ease both; }
 
-.hero-sub {
-  max-width: 540px;
-  font-size: 19px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.6;
-  margin-bottom: 36px;
-  animation: fadeUp 0.8s 0.12s ease both;
-}
-
-/* ── AWS CERT BADGE ON HERO ── */
+/* ── AWS CERT HERO BADGE ── */
 .hero-aws-cert {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255,153,0,0.1);
-  border: 1px solid rgba(255,153,0,0.3);
-  border-radius: 12px;
-  padding: 12px 20px;
-  margin-bottom: 36px;
-  text-decoration: none;
-  transition: all 0.2s;
-  animation: fadeUp 0.8s 0.16s ease both;
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(255,153,0,0.1); border: 1px solid rgba(255,153,0,0.3);
+  border-radius: 12px; padding: 12px 20px; margin-bottom: 36px;
+  text-decoration: none; transition: all 0.2s; animation: fadeUp 0.8s 0.16s ease both;
 }
-.hero-aws-cert:hover {
-  background: rgba(255,153,0,0.18);
-  border-color: rgba(255,153,0,0.5);
-  transform: translateY(-2px);
-}
-.aws-logo-box {
-  width: 36px; height: 36px;
-  background: var(--aws-orange);
-  border-radius: 7px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0;
-  font-weight: 800; color: white;
-  font-family: monospace;
-  letter-spacing: -1px;
-}
+.hero-aws-cert:hover { background: rgba(255,153,0,0.18); border-color: rgba(255,153,0,0.5); transform: translateY(-2px); }
+.aws-logo-box { width: 36px; height: 36px; background: var(--aws-orange); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: white; font-family: monospace; flex-shrink: 0; letter-spacing: -0.5px; }
 .aws-cert-text { text-align: left; }
 .aws-cert-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); line-height: 1.3; }
-.aws-cert-sub { font-size: 11px; color: var(--aws-orange); font-weight: 500; letter-spacing: 0.3px; margin-top: 2px; }
+.aws-cert-sub { font-size: 11px; color: var(--aws-orange); font-weight: 500; margin-top: 2px; }
 .aws-cert-verify { font-size: 10px; color: rgba(255,153,0,0.6); margin-top: 1px; }
 
-.hero-actions {
-  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-  animation: fadeUp 0.8s 0.2s ease both;
-}
-.btn-hero-primary {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--blue-light); color: white;
-  font-size: 15px; font-weight: 500;
-  padding: 13px 26px; border-radius: 980px; text-decoration: none;
-  transition: all 0.2s;
-}
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.2s ease both; }
+.btn-hero-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--blue-light); color: white; font-size: 15px; font-weight: 500; padding: 13px 26px; border-radius: 980px; text-decoration: none; transition: all 0.2s; }
 .btn-hero-primary:hover { background: #4db0ff; transform: scale(1.02); }
-.btn-hero-ghost {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-  color: white; font-size: 15px; font-weight: 400;
-  padding: 13px 26px; border-radius: 980px; text-decoration: none;
-  transition: all 0.2s;
-}
+.btn-hero-ghost { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: white; font-size: 15px; font-weight: 400; padding: 13px 26px; border-radius: 980px; text-decoration: none; transition: all 0.2s; }
 .btn-hero-ghost:hover { background: rgba(255,255,255,0.14); }
 
 /* ─── STATS STRIP ─── */
@@ -201,10 +103,10 @@ nav {
 .stat-col { padding: 40px 32px; border-right: 1px solid var(--light-gray); text-align: center; }
 .stat-col:last-child { border-right: none; }
 .stat-num { font-family: 'DM Serif Display', serif; font-size: 44px; font-weight: 400; color: var(--dark); line-height: 1; letter-spacing: -1px; margin-bottom: 6px; }
-.stat-num .unit { font-size: 26px; vertical-align: super; letter-spacing: 0; }
+.stat-num .unit { font-size: 26px; vertical-align: super; }
 .stat-label { font-size: 13px; color: var(--mid-gray); line-height: 1.4; }
 
-/* ─── SECTIONS ─── */
+/* ─── SECTION BASICS ─── */
 .section { max-width: 980px; margin: 0 auto; padding: 100px 24px; }
 .section-eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue); margin-bottom: 14px; }
 .section-headline { font-family: 'DM Serif Display', serif; font-size: clamp(32px,5vw,52px); font-weight: 400; color: var(--dark); line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; }
@@ -212,18 +114,14 @@ nav {
 
 /* ─── EXPERIENCE ─── */
 .exp-timeline { display: flex; flex-direction: column; gap: 2px; }
-.exp-card {
-  background: var(--off-white); border-radius: var(--radius); padding: 40px;
-  display: grid; grid-template-columns: 220px 1fr; gap: 48px;
-  transition: background 0.2s;
-}
+.exp-card { background: var(--off-white); border-radius: var(--radius); padding: 40px; display: grid; grid-template-columns: 220px 1fr; gap: 48px; transition: background 0.2s; }
 .exp-card:hover { background: #ebebef; }
 .exp-period { font-size: 12px; font-weight: 500; letter-spacing: 0.5px; color: var(--blue); text-transform: uppercase; margin-bottom: 10px; }
-.exp-company-name { font-size: 17px; font-weight: 600; color: var(--dark); margin-bottom: 3px; letter-spacing: -0.2px; }
+.exp-company-name { font-size: 17px; font-weight: 600; color: var(--dark); margin-bottom: 3px; }
 .exp-company-link { text-decoration: none; color: inherit; border-bottom: 1px solid transparent; transition: border-color 0.2s, color 0.2s; }
 .exp-company-link:hover { color: var(--blue); border-bottom-color: var(--blue); }
 .exp-location-text { font-size: 13px; color: var(--mid-gray); margin-bottom: 14px; }
-.exp-role-badge { display: inline-block; background: var(--dark); color: white; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 980px; letter-spacing: 0.2px; }
+.exp-role-badge { display: inline-block; background: var(--dark); color: white; font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 980px; }
 .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .exp-bullets li { font-size: 15px; color: #3a3a3c; line-height: 1.6; padding-left: 18px; position: relative; font-weight: 300; }
 .exp-bullets li::before { content: ''; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-light); }
@@ -264,34 +162,97 @@ nav {
 .skill-group:hover { background: #ebebef; }
 .skill-group-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.3px; color: var(--blue); margin-bottom: 16px; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.skill-tag { font-size: 13px; font-weight: 400; color: var(--dark); background: var(--white); border: 1px solid var(--light-gray); border-radius: 980px; padding: 5px 13px; transition: all 0.15s; }
+.skill-tag { font-size: 13px; color: var(--dark); background: var(--white); border: 1px solid var(--light-gray); border-radius: 980px; padding: 5px 13px; transition: all 0.15s; }
 .skill-tag:hover { background: var(--dark); color: white; border-color: var(--dark); }
 
 /* ─── CERTIFICATIONS ─── */
 #certs { background: var(--off-white); }
 .certs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+
 .cert-card {
-  background: var(--white); border-radius: var(--radius); padding: 28px;
-  border: 1px solid var(--light-gray); display: flex; gap: 16px;
-  align-items: flex-start; text-decoration: none;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  border: 1px solid var(--light-gray);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  text-decoration: none;
   transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
 }
 .cert-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: #ccc; }
-.cert-logo { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-.cert-info {}
+
+/* THE FIX: logo box is fixed size, image fills it proportionally */
+.cert-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 6px;
+}
+.cert-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .cert-name { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 4px; line-height: 1.35; }
 .cert-issuer { font-size: 12px; color: var(--mid-gray); margin-bottom: 8px; }
-.cert-verify-link {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: 11px; font-weight: 600; color: var(--blue);
-  letter-spacing: 0.3px; text-transform: uppercase;
-}
+.cert-verify-link { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: 0.3px; text-transform: uppercase; }
 .cert-verify-link::after { content: ' →'; }
 
-/* AWS cert special styling */
-.cert-card.aws-card { border-color: rgba(255,153,0,0.3); background: linear-gradient(135deg, #fff 85%, rgba(255,153,0,0.04)); }
+.cert-card.aws-card { border-color: rgba(255,153,0,0.3); background: linear-gradient(135deg,#fff 85%,rgba(255,153,0,0.04)); }
 .cert-card.aws-card:hover { border-color: rgba(255,153,0,0.6); box-shadow: 0 12px 32px rgba(255,153,0,0.12); }
 .cert-card.aws-card .cert-verify-link { color: var(--aws-orange); }
+.cert-card.aws-card .cert-logo { background: rgba(255,153,0,0.08); }
+.cert-card.db-card .cert-logo { background: rgba(255,60,0,0.06); }
+.cert-card.cisco-card .cert-logo { background: rgba(0,112,250,0.06); }
+
+/* ─── CHAT SECTION ─── */
+#chat { background: var(--black); padding: 100px 24px; }
+#chat .section-eyebrow { color: var(--blue-light); }
+#chat .section-headline { color: var(--white); }
+#chat .section-sub { color: rgba(255,255,255,0.4); }
+
+.sugg-btn {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 980px; color: rgba(255,255,255,0.7); font-family: 'DM Sans', sans-serif;
+  font-size: 13px; padding: 8px 16px; cursor: pointer; transition: all 0.2s;
+}
+.sugg-btn:hover { background: rgba(41,151,255,0.15); border-color: rgba(41,151,255,0.4); color: var(--blue-light); }
+
+#chat-window { background: #111113; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden; }
+#chat-messages { padding: 24px; display: flex; flex-direction: column; gap: 20px; min-height: 320px; max-height: 480px; overflow-y: auto; scroll-behavior: smooth; }
+#chat-messages::-webkit-scrollbar { width: 4px; }
+#chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+.chat-msg { display: flex; gap: 12px; align-items: flex-start; }
+.chat-msg.user-msg { flex-direction: row-reverse; }
+
+.msg-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg,#2997ff,#7c3aed); color: white; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; letter-spacing: 0.5px; }
+.user-msg .msg-avatar { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: 15px; }
+
+.msg-bubble { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; border-top-left-radius: 4px; padding: 14px 18px; font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.65; max-width: 78%; font-weight: 300; }
+.user-msg .msg-bubble { background: rgba(41,151,255,0.15); border-color: rgba(41,151,255,0.25); border-top-left-radius: 16px; border-top-right-radius: 4px; }
+
+.typing-indicator { display: flex; gap: 5px; padding: 4px 2px; align-items: center; }
+.typing-dot { width: 7px; height: 7px; background: rgba(255,255,255,0.3); border-radius: 50%; animation: typingBounce 1.2s infinite ease-in-out; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce { 0%,80%,100%{transform:scale(0.8);opacity:0.4} 40%{transform:scale(1.1);opacity:1} }
+
+#chat-input-row { display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding: 16px 20px; background: #0d0d0f; }
+#chat-input { flex: 1; background: transparent; border: none; outline: none; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.85); caret-color: var(--blue-light); }
+#chat-input::placeholder { color: rgba(255,255,255,0.25); }
+#send-btn { width: 38px; height: 38px; background: var(--blue-light); border: none; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+#send-btn:hover { background: #4db0ff; transform: scale(1.05); }
+#send-btn:disabled { background: rgba(255,255,255,0.1); cursor: not-allowed; transform: none; }
+#chat-footer-note { text-align: center; font-size: 11px; color: rgba(255,255,255,0.18); padding: 10px; background: #0d0d0f; }
 
 /* ─── CONTACT ─── */
 #contact { background: var(--dark); padding: 120px 24px; text-align: center; }
@@ -303,10 +264,10 @@ nav {
 .contact-main-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-light); color: white; font-size: 17px; font-weight: 500; padding: 16px 36px; border-radius: 980px; text-decoration: none; transition: all 0.2s; }
 .contact-main-btn:hover { background: #4db0ff; transform: scale(1.02); }
 
-footer { background: var(--black); text-align: center; padding: 20px; font-size: 12px; color: rgba(255,255,255,0.22); border-top: 1px solid rgba(255,255,255,0.06); letter-spacing: 0.3px; }
+footer { background: var(--black); text-align: center; padding: 20px; font-size: 12px; color: rgba(255,255,255,0.22); border-top: 1px solid rgba(255,255,255,0.06); }
 
 /* ─── ANIMATIONS ─── */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
 .reveal.visible { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: 0.08s; }
@@ -337,6 +298,7 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#certs">Certifications</a></li>
+    <li><a href="#chat" class="highlight">Chat with Me ✦</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="mailto:dineshreddy9020@gmail.com" class="nav-cta">Get in Touch</a>
@@ -345,24 +307,15 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
 <!-- HERO -->
 <section id="hero">
   <div class="hero-gradient"></div>
-
-  <!-- TRIPLE ROLE TITLES -->
   <div class="title-pills">
     <span class="title-pill pill-ai"><span class="dot"></span>AI Engineer</span>
     <span class="title-pill pill-ml"><span class="dot"></span>ML Engineer</span>
     <span class="title-pill pill-mlops"><span class="dot"></span>MLOps Engineer</span>
   </div>
-
-  <div class="hero-badge">
-    <span class="hero-dot"></span>
-    Open to new opportunities · Dallas, TX
-  </div>
-
+  <div class="hero-badge"><span class="hero-dot"></span>Open to new opportunities · Dallas, TX</div>
   <h1 class="hero-title">I build AI systems<br><em>that deliver.</em></h1>
   <p class="hero-sub">From agentic RAG pipelines to LLM fine-tuning and enterprise MLOps — 3+ years turning cutting-edge research into production systems that move real business metrics.</p>
 
-  <!-- AWS CERT BADGE — prominent on hero -->
-  <!-- ⚠️  Replace the href below with YOUR actual Credly badge URL from aws.amazon.com/certification -->
   <a href="https://www.credly.com/badges/cdeca2b2-66c3-469d-8953-2b9a317d690e/linked_in_profile" target="_blank" class="hero-aws-cert">
     <div class="aws-logo-box">AWS</div>
     <div class="aws-cert-text">
@@ -381,22 +334,10 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
 <!-- STATS STRIP -->
 <div class="stats-strip">
   <div class="stats-inner">
-    <div class="stat-col reveal">
-      <div class="stat-num">28<span class="unit">%</span></div>
-      <div class="stat-label">Hallucination reduction in enterprise LLM systems</div>
-    </div>
-    <div class="stat-col reveal reveal-d1">
-      <div class="stat-num">99<span class="unit">%</span></div>
-      <div class="stat-label">Field extraction accuracy across 150+ retailer docs</div>
-    </div>
-    <div class="stat-col reveal reveal-d2">
-      <div class="stat-num">95<span class="unit">%</span></div>
-      <div class="stat-label">Product match accuracy on million-SKU catalog</div>
-    </div>
-    <div class="stat-col reveal reveal-d3">
-      <div class="stat-num">3<span class="unit">+</span></div>
-      <div class="stat-label">Years of ML engineering and GenAI experience</div>
-    </div>
+    <div class="stat-col reveal"><div class="stat-num">28<span class="unit">%</span></div><div class="stat-label">Hallucination reduction in enterprise LLM systems</div></div>
+    <div class="stat-col reveal reveal-d1"><div class="stat-num">99<span class="unit">%</span></div><div class="stat-label">Field extraction accuracy across 150+ retailer docs</div></div>
+    <div class="stat-col reveal reveal-d2"><div class="stat-num">95<span class="unit">%</span></div><div class="stat-label">Product match accuracy on million-SKU catalog</div></div>
+    <div class="stat-col reveal reveal-d3"><div class="stat-num">3<span class="unit">+</span></div><div class="stat-label">Years of ML engineering and GenAI experience</div></div>
   </div>
 </div>
 
@@ -405,16 +346,12 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
   <p class="section-eyebrow reveal">Career</p>
   <h2 class="section-headline reveal">Where I've built<br>things that matter.</h2>
   <p class="section-sub reveal">Every role. Real numbers. Every claim defensible.</p>
-
   <div class="exp-timeline">
 
-    <!-- Southern Glazer's -->
     <div class="exp-card reveal">
       <div class="exp-left">
         <div class="exp-period">Sep 2025 — Present</div>
-        <div class="exp-company-name">
-          <a href="https://www.southernglazers.com" target="_blank" class="exp-company-link">Southern Glazer's Wine & Spirits ↗</a>
-        </div>
+        <div class="exp-company-name"><a href="https://www.southernglazers.com" target="_blank" class="exp-company-link">Southern Glazer's Wine & Spirits ↗</a></div>
         <div class="exp-location-text">Dallas, TX</div>
         <span class="exp-role-badge">ML Engineer</span>
       </div>
@@ -435,7 +372,6 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
       </div>
     </div>
 
-    <!-- KATS -->
     <div class="exp-card reveal">
       <div class="exp-left">
         <div class="exp-period">Jan 2025 — May 2025</div>
@@ -457,13 +393,10 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
       </div>
     </div>
 
-    <!-- Auraworx -->
     <div class="exp-card reveal">
       <div class="exp-left">
         <div class="exp-period">Oct 2022 — Aug 2023</div>
-        <div class="exp-company-name">
-          <a href="https://www.auraworx.com" target="_blank" class="exp-company-link">AuraWorx ↗</a>
-        </div>
+        <div class="exp-company-name"><a href="https://www.auraworx.com" target="_blank" class="exp-company-link">AuraWorx ↗</a></div>
         <div class="exp-location-text">California (Remote)</div>
         <span class="exp-role-badge">SWE, ML</span>
       </div>
@@ -480,13 +413,10 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
       </div>
     </div>
 
-    <!-- TCS -->
     <div class="exp-card reveal">
       <div class="exp-left">
         <div class="exp-period">Aug 2021 — Oct 2022</div>
-        <div class="exp-company-name">
-          <a href="https://www.tcs.com" target="_blank" class="exp-company-link">Tata Consultancy Services ↗</a>
-        </div>
+        <div class="exp-company-name"><a href="https://www.tcs.com" target="_blank" class="exp-company-link">Tata Consultancy Services ↗</a></div>
         <div class="exp-location-text">India</div>
         <span class="exp-role-badge">SWE, Data Science</span>
       </div>
@@ -508,12 +438,12 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
 
 <!-- IMPACT BENTO -->
 <section id="impact">
-  <div class="section" style="padding-bottom: 0; max-width: 980px;">
+  <div class="section" style="padding-bottom:0; max-width:980px;">
     <p class="section-eyebrow reveal">Impact</p>
     <h2 class="section-headline reveal">Numbers that speak<br>for themselves.</h2>
     <p class="section-sub reveal">Every metric earned in production, not in notebooks.</p>
   </div>
-  <div class="bento-grid" style="padding: 0 24px 100px;">
+  <div class="bento-grid" style="padding:0 24px 100px;">
     <div class="bento-card wide reveal">
       <div class="bento-label">Lineage Mapping · Databricks AI Agent</div>
       <div class="bento-big-num blue">58% → 91%</div>
@@ -552,161 +482,100 @@ footer { background: var(--black); text-align: center; padding: 20px; font-size:
       <div class="proj-num">01</div>
       <div class="proj-title">GenAI Multi-Agent Vehicle Damage Analyst</div>
       <div class="proj-desc">Multimodal multi-agent system using GPT-4o, Claude 3.5 Sonnet & PyAutoGen to automate vehicle damage classification, severity scoring, and cost estimation from images and claim documents.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">GPT-4o</span><span class="proj-tag">Claude 3.5</span>
-        <span class="proj-tag">PyAutoGen</span><span class="proj-tag">Flask</span><span class="proj-tag">VLM</span>
-      </div>
+      <div class="proj-tags"><span class="proj-tag">GPT-4o</span><span class="proj-tag">Claude 3.5</span><span class="proj-tag">PyAutoGen</span><span class="proj-tag">Flask</span><span class="proj-tag">VLM</span></div>
       <div class="proj-metric">↑ 90% reduction in manual inspection time</div>
     </div>
     <div class="project-card reveal reveal-d1">
       <div class="proj-num">02</div>
       <div class="proj-title">Multi-Agent ML Automation System</div>
       <div class="proj-desc">CrewAI-powered system of 4–5 specialized agents using A2A protocols and memory management to autonomously orchestrate ML model development, testing, and evaluation end-to-end.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">CrewAI</span><span class="proj-tag">A2A</span>
-        <span class="proj-tag">FastAPI</span><span class="proj-tag">Docker</span><span class="proj-tag">GitHub Actions</span>
-      </div>
+      <div class="proj-tags"><span class="proj-tag">CrewAI</span><span class="proj-tag">A2A</span><span class="proj-tag">FastAPI</span><span class="proj-tag">Docker</span><span class="proj-tag">GitHub Actions</span></div>
       <div class="proj-metric">↑ &lt;500ms agent response latency</div>
     </div>
     <div class="project-card reveal reveal-d2">
       <div class="proj-num">03</div>
       <div class="proj-title">PersonaLLM — Production LLM Persona System</div>
       <div class="proj-desc">Production-ready LLM persona system with microservices FTI architecture, QLoRA fine-tuning, RAG pipeline, and vLLM inference optimization for high-throughput serving.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">vLLM</span><span class="proj-tag">QLoRA</span>
-        <span class="proj-tag">RAG</span><span class="proj-tag">HuggingFace</span><span class="proj-tag">FastAPI</span>
-      </div>
+      <div class="proj-tags"><span class="proj-tag">vLLM</span><span class="proj-tag">QLoRA</span><span class="proj-tag">RAG</span><span class="proj-tag">HuggingFace</span><span class="proj-tag">FastAPI</span></div>
       <div class="proj-metric">↑ 200 QPS · 92% relevance · 60% latency reduction</div>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="section" style="background: var(--white); max-width: 100%; padding: 100px 24px;">
-  <div style="max-width: 980px; margin: 0 auto;">
+<section id="skills" style="background:var(--white); padding:100px 24px;">
+  <div style="max-width:980px; margin:0 auto;">
     <p class="section-eyebrow reveal">Arsenal</p>
     <h2 class="section-headline reveal">Technical Skills</h2>
     <p class="section-sub reveal">Production-tested across enterprise AI, MLOps, and cloud.</p>
     <div class="skills-grid">
-      <div class="skill-group reveal">
-        <div class="skill-group-label">Languages</div>
-        <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">R</span></div>
-      </div>
-      <div class="skill-group reveal reveal-d1">
-        <div class="skill-group-label">ML / AI Frameworks</div>
-        <div class="skill-tags">
-          <span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Scikit-learn</span>
-          <span class="skill-tag">HuggingFace</span><span class="skill-tag">XGBoost</span><span class="skill-tag">vLLM</span><span class="skill-tag">Pandas</span>
-        </div>
-      </div>
-      <div class="skill-group reveal reveal-d2">
-        <div class="skill-group-label">Generative AI / LLMs</div>
-        <div class="skill-tags">
-          <span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span><span class="skill-tag">CrewAI</span>
-          <span class="skill-tag">RAG</span><span class="skill-tag">QLoRA</span><span class="skill-tag">MCP</span>
-          <span class="skill-tag">A2A</span><span class="skill-tag">Pinecone</span><span class="skill-tag">LlamaIndex</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-label">Multimodal AI</div>
-        <div class="skill-tags">
-          <span class="skill-tag">GPT-4o</span><span class="skill-tag">Claude 3.5</span><span class="skill-tag">PyAutoGen</span>
-          <span class="skill-tag">Azure Doc Intelligence</span><span class="skill-tag">OCR</span><span class="skill-tag">CLIP</span>
-        </div>
-      </div>
-      <div class="skill-group reveal reveal-d1">
-        <div class="skill-group-label">Evaluation & Observability</div>
-        <div class="skill-tags">
-          <span class="skill-tag">RAGAS</span><span class="skill-tag">LLM-as-a-Judge</span><span class="skill-tag">ROUGE</span>
-          <span class="skill-tag">Arize AI</span><span class="skill-tag">PSI Drift</span><span class="skill-tag">MLflow</span>
-        </div>
-      </div>
-      <div class="skill-group reveal reveal-d2">
-        <div class="skill-group-label">MLOps & Cloud</div>
-        <div class="skill-tags">
-          <span class="skill-tag">AWS SageMaker</span><span class="skill-tag">Databricks</span><span class="skill-tag">Docker</span>
-          <span class="skill-tag">Kubernetes</span><span class="skill-tag">Airflow</span><span class="skill-tag">Harness</span><span class="skill-tag">GitHub Actions</span>
-        </div>
-      </div>
+      <div class="skill-group reveal"><div class="skill-group-label">Languages</div><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">R</span></div></div>
+      <div class="skill-group reveal reveal-d1"><div class="skill-group-label">ML / AI Frameworks</div><div class="skill-tags"><span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">HuggingFace</span><span class="skill-tag">XGBoost</span><span class="skill-tag">vLLM</span><span class="skill-tag">Pandas</span></div></div>
+      <div class="skill-group reveal reveal-d2"><div class="skill-group-label">Generative AI / LLMs</div><div class="skill-tags"><span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span><span class="skill-tag">CrewAI</span><span class="skill-tag">RAG</span><span class="skill-tag">QLoRA</span><span class="skill-tag">MCP</span><span class="skill-tag">A2A</span><span class="skill-tag">Pinecone</span><span class="skill-tag">LlamaIndex</span></div></div>
+      <div class="skill-group reveal"><div class="skill-group-label">Multimodal AI</div><div class="skill-tags"><span class="skill-tag">GPT-4o</span><span class="skill-tag">Claude 3.5</span><span class="skill-tag">PyAutoGen</span><span class="skill-tag">Azure Doc Intelligence</span><span class="skill-tag">OCR</span><span class="skill-tag">CLIP</span></div></div>
+      <div class="skill-group reveal reveal-d1"><div class="skill-group-label">Evaluation & Observability</div><div class="skill-tags"><span class="skill-tag">RAGAS</span><span class="skill-tag">LLM-as-a-Judge</span><span class="skill-tag">ROUGE</span><span class="skill-tag">Arize AI</span><span class="skill-tag">PSI Drift</span><span class="skill-tag">MLflow</span></div></div>
+      <div class="skill-group reveal reveal-d2"><div class="skill-group-label">MLOps & Cloud</div><div class="skill-tags"><span class="skill-tag">AWS SageMaker</span><span class="skill-tag">Databricks</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Airflow</span><span class="skill-tag">Harness</span><span class="skill-tag">GitHub Actions</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- CERTIFICATIONS -->
-<section id="certs" class="section" style="background: var(--off-white); max-width: 100%; padding: 80px 24px;">
-  <div style="max-width: 980px; margin: 0 auto;">
+<section id="certs" style="background:var(--off-white); padding:80px 24px;">
+  <div style="max-width:980px; margin:0 auto;">
     <p class="section-eyebrow reveal">Credentials</p>
     <h2 class="section-headline reveal">Certifications</h2>
-    <p class="section-sub reveal" style="margin-bottom: 32px;">All credentials are verifiable. Click any card to verify.</p>
+    <p class="section-sub reveal" style="margin-bottom:32px;">All credentials are verifiable. Click any card to verify.</p>
     <div class="certs-grid">
 
-      <!-- AWS — links to Credly/verification -->
-      <!-- ⚠️ Replace href with your personal Credly badge URL -->
-
       <a href="https://www.credly.com/badges/cdeca2b2-66c3-469d-8953-2b9a317d690e/linked_in_profile" target="_blank" class="cert-card aws-card reveal">
-        <div class="cert-logo">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" />
-         </div>
-        <div class="cert-info">
+        <div class="cert-logo" style="background:#ff9900; border-radius:10px; width:52px; height:52px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg viewBox="0 0 80 48" width="38" height="23" xmlns="http://www.w3.org/2000/svg" fill="white">
+            <path d="M22.6 19.6c0 .8.1 1.5.2 2 .2.6.4 1.2.8 1.9.1.2.2.4.2.6 0 .3-.2.5-.5.7l-1.6 1.1c-.2.1-.4.2-.6.2-.2 0-.5-.1-.7-.3-.3-.4-.6-.8-.8-1.2-.2-.4-.4-.9-.7-1.5-1.7 2-3.9 3-6.4 3-1.8 0-3.3-.5-4.3-1.6-1-1-1.6-2.4-1.6-4.1 0-1.8.6-3.3 1.9-4.4 1.3-1.1 3-1.6 5.2-1.6.7 0 1.5.1 2.3.2.8.1 1.6.3 2.5.6v-1.6c0-1.6-.3-2.8-1-3.4-.7-.7-1.8-1-3.4-1-.7 0-1.5.1-2.3.3-.8.2-1.5.4-2.2.8-.3.2-.6.3-.8.3-.3 0-.4-.2-.4-.6v-1c0-.3 0-.5.1-.7.1-.2.3-.3.6-.5.7-.4 1.6-.7 2.6-.9 1-.2 2.1-.4 3.2-.4 2.5 0 4.3.6 5.5 1.7 1.2 1.1 1.7 2.8 1.7 5.1v6.6zm-8.8 3.3c.7 0 1.4-.1 2.2-.4.8-.3 1.4-.8 2-1.4.3-.4.6-.8.7-1.3.1-.5.2-1.1.2-1.8v-.9c-.6-.1-1.3-.3-2-.4-.7-.1-1.3-.1-1.9-.1-1.4 0-2.4.3-3 .8-.7.5-1 1.3-1 2.3 0 .9.2 1.6.7 2.1.5.7 1.2 1.1 2.1 1.1zm16.3 2.2c-.4 0-.6-.1-.8-.2-.2-.2-.3-.5-.5-1l-5.1-16.9c-.1-.5-.2-.8-.2-1 0-.4.2-.6.6-.6h2.3c.4 0 .7.1.8.2.2.2.3.5.5 1l3.6 14.3 3.4-14.3c.1-.5.3-.8.5-1 .2-.1.5-.2.9-.2h1.8c.4 0 .7.1.9.2.2.2.4.5.5 1l3.4 14.5 3.7-14.5c.1-.5.3-.8.5-1 .2-.1.5-.2.8-.2h2.2c.4 0 .6.2.6.6 0 .1 0 .3-.1.5 0 .2-.1.4-.2.7l-5.2 16.9c-.1.5-.3.8-.5 1-.2.2-.5.2-.8.2h-1.9c-.4 0-.7-.1-.9-.2-.2-.2-.4-.5-.5-1l-3.4-13.8-3.3 13.8c-.1.5-.3.8-.5 1-.2.1-.5.2-.9.2h-1.8zm27.8.6c-1.1 0-2.2-.1-3.3-.4-1-.3-1.8-.6-2.4-1-.3-.2-.5-.4-.6-.6-.1-.2-.1-.4-.1-.6v-1.1c0-.4.2-.6.5-.6.1 0 .3 0 .4.1l.6.3c.8.4 1.6.6 2.5.8.9.2 1.7.3 2.6.3 1.4 0 2.5-.2 3.2-.7.7-.5 1.1-1.1 1.1-2 0-.6-.2-1.1-.6-1.5-.4-.4-1.1-.8-2.2-1.1l-3.1-.9c-1.6-.5-2.7-1.2-3.4-2.2-.7-1-.1-2.1-.1-3.2 0-.9.2-1.7.6-2.4.4-.7.9-1.3 1.6-1.8.7-.5 1.4-.9 2.3-1.1.9-.3 1.8-.4 2.8-.4.5 0 1 0 1.5.1.5.1 1 .2 1.4.3.5.1.9.3 1.3.4.4.2.7.3.9.5.3.2.5.4.6.6.1.2.2.5.2.8v1c0 .4-.2.6-.5.6-.2 0-.4-.1-.8-.3-.7-.3-1.4-.5-2.1-.7-.7-.2-1.5-.3-2.2-.3-1.2 0-2.2.2-2.9.6-.7.4-1 1-1 1.9 0 .6.2 1.1.6 1.5.4.4 1.2.8 2.4 1.1l3.1.9c1.5.5 2.6 1.2 3.3 2.1.7.9 1 1.9 1 3.1 0 .9-.2 1.8-.6 2.5-.4.7-1 1.4-1.7 1.9-.7.5-1.5.9-2.5 1.2-1 .3-2 .4-3.2.4z"/>
+          </svg>
+        </div>
+        <div>
           <div class="cert-name">AWS Certified Machine Learning Engineer – Associate</div>
           <div class="cert-issuer">Amazon Web Services</div>
           <div class="cert-verify-link">Verify credential</div>
         </div>
-        </a>
+      </a>
 
-      <!-- Databricks — links to their credential page -->
-      <a href="https://credentials.databricks.com/58c698b9-ad91-410b-bc75-c199d76358a6#acc.KGB6pdj3" target="_blank" class="cert-card reveal reveal-d1">
-        <div class="cert-logo">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Databricks_Logo.png" alt="Databricks Logo" />
+      <a href="https://credentials.databricks.com/58c698b9-ad91-410b-bc75-c199d76358a6#acc.KGB6pdj3" target="_blank" class="cert-card db-card reveal reveal-d1">
+        <div class="cert-logo" style="background:#ff3621; border-radius:10px; width:52px; height:52px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg" fill="white">
+            <path d="M12 1.5L1.5 7.5v4.25L12 17.75l10.5-6V7.5L12 1.5zM1.5 13.25v3.25L12 22.5l10.5-6v-3.25L12 19.25 1.5 13.25z"/>
+          </svg>
         </div>
-        <div class="cert-info">
+        <div>
           <div class="cert-name">Databricks Certified Generative AI Fundamentals</div>
           <div class="cert-issuer">Databricks</div>
           <div class="cert-verify-link">Verify credential</div>
         </div>
       </a>
 
-      <!-- Cisco -->
-      <a href="https://www.credly.com/badges/dddd70ac-beb8-4cb4-b251-3cf85252e71a/linked_in_profile" target="_blank" class="cert-card reveal reveal-d2">
-        <div class="cert-logo">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo_blue_2016.svg" alt="Cisco Logo" />
+      <a href="https://www.credly.com/badges/dddd70ac-beb8-4cb4-b251-3cf85252e71a/linked_in_profile" target="_blank" class="cert-card cisco-card reveal reveal-d2">
+        <div class="cert-logo" style="background:#1ba0d7; border-radius:10px; width:52px; height:52px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg viewBox="0 0 60 24" width="36" height="14" xmlns="http://www.w3.org/2000/svg" fill="white">
+            <rect x="0" y="6" width="6" height="12" rx="2"/>
+            <rect x="9" y="3" width="6" height="18" rx="2"/>
+            <rect x="18" y="0" width="6" height="24" rx="2"/>
+            <rect x="27" y="3" width="6" height="18" rx="2"/>
+            <rect x="36" y="6" width="6" height="12" rx="2"/>
+            <rect x="45" y="9" width="6" height="6" rx="2"/>
+            <rect x="54" y="9" width="6" height="6" rx="2"/>
+          </svg>
         </div>
-        <div class="cert-info">
+        <div>
           <div class="cert-name">Cisco Certified Data Analytics Essentials</div>
           <div class="cert-issuer">Cisco</div>
           <div class="cert-verify-link">Verify credential</div>
         </div>
       </a>
-      
+
     </div>
-    <p style="font-size: 12px; color: var(--mid-gray); margin-top: 16px; text-align: center;">
-      💡 For your AWS cert: log into <strong>aws.amazon.com/certification</strong> → Digital Badges → copy your personal Credly URL and replace the link above.
-    </p>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <p class="section-eyebrow reveal" style="color: var(--blue-light); display: flex; justify-content: center;">Let's Connect</p>
-  <h2 class="contact-headline reveal">Ready to build<br>something great?</h2>
-  <p class="contact-sub reveal">Open to AI/ML engineering roles, GenAI consulting, and research collaborations. Based in Dallas, TX — open to remote and hybrid.</p>
-  <div class="contact-links reveal">
-    <a href="mailto:dineshreddy9020@gmail.com" class="contact-link">✉ dineshreddy9020@gmail.com</a>
-    <a href="tel:+16699778768" class="contact-link">📞 +1 (669) 977-8768</a>
-    <a href="https://linkedin.com/in/dinesh-kothur" target="_blank" class="contact-link">in LinkedIn</a>
-  </div>
-  <a href="mailto:dineshreddy9020@gmail.com" class="contact-main-btn reveal">Say hello →</a>
-</section>
-
-<footer>
-  © 2026 Dinesh Kothur · AI Engineer · ML Engineer · MLOps · Dallas, TX
-</footer>
-
-<script>
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
